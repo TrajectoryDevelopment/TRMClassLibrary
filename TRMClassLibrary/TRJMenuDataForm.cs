@@ -308,10 +308,20 @@ namespace TRMClassLibrary
             this.EditRoutine();
         }
 
+        virtual protected bool DeleteConfirmed()
+        {
+            string message = "Continue to delete this record?";
+            string caption = "Data Deletion Confirmation";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            result = MessageBox.Show(this, message, caption, buttons);
+            return result == DialogResult.Yes;
+     
+        }
         virtual protected void DeleteRoutine()
         {
-            // Delete Code from child
-            // MessageBox.Show("Delete Clicked");
+
         }
 
         virtual protected int SearchRoutine() 
@@ -347,16 +357,11 @@ namespace TRMClassLibrary
 
         public void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string message = "Continue to delete this record?";
-            string caption = "Data Deletion Confirmation";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
 
-            result = MessageBox.Show(this, message, caption, buttons);
-
-            if (result == DialogResult.Yes)
+            if (DeleteConfirmed() == true)
             {
-                this.DeleteRoutine();
+                 DeleteRoutine();
+
             }
         }
 

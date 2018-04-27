@@ -146,13 +146,12 @@
 
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
         public System.Windows.Forms.MenuStrip menuStrip1;
         public System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem doneToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         public System.Windows.Forms.ToolStripTextBox searchToolStripTextBox;
-
+        public System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
     }
 }

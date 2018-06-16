@@ -35,6 +35,13 @@ namespace TRMClassLibrary
 
             }
         }
+
+        public static int?  ConvertTextToNullableInt(string s)
+        {
+            int i;
+            int? retint = int.TryParse(s, out i) ? (int?)i : null;
+            return retint;
+        }
   
         //public virtual void EnableControls(string vmode)
         //{

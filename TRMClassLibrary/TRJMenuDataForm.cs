@@ -108,6 +108,7 @@ namespace TRMClassLibrary
                 visMode = value;
             }
         }
+
         private BindingSource navBindingSource;
         public BindingSource NavBindingSource
         {

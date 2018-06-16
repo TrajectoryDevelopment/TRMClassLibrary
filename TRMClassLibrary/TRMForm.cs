@@ -25,6 +25,20 @@ namespace TRMClassLibrary
 
    //         SetWindowSize();
         }
+    
+        private BindingSource navBindingSource;
+        public BindingSource NavBindingSource
+        {
+            get
+            {
+                return navBindingSource;
+            }
+            set
+            {
+                navBindingSource = value;
+            }
+        }
+
         protected PrintDocument printDocument1 = new PrintDocument();
 
         //virtual protected void SetWindowSize()

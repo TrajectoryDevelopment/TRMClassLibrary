@@ -81,6 +81,21 @@
     <Compile Include="MaskedDateBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TRJButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJCheckedListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TRJDateEntryTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -90,11 +105,47 @@
     <Compile Include="TRJDateTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TRJDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJLinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJMonthCalendar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TRJNavigatorForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TRJNavigatorForm.Designer.cs">
       <DependentUpon>TRJNavigatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRJNumericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJTreeview.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="TRM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

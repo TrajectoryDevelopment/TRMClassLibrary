@@ -144,7 +144,7 @@ namespace TRMClassLibrary
                 }
 
 
-                if (ctrl is Panel || ctrl is UserControl)
+                if (ctrl is Panel | ctrl is UserControl)
                 {
                     if ((string)ctrl.Tag == "Navigation")
                     {
@@ -194,7 +194,8 @@ namespace TRMClassLibrary
 
             else
             {
-                if (ctrl is TextBox | ctrl is ComboBox | ctrl is DateTimePicker | ctrl is System.Windows.Forms.CheckBox)
+                if (ctrl is TextBox | ctrl is ComboBox | ctrl is DateTimePicker | 
+                    ctrl is System.Windows.Forms.CheckBox)
                 {
                     // var bc = Color.FromKnownColor(KnownColor.Magenta);
                     //   ctrl.Enabled = (vmode.ToUpper() == "EDIT");

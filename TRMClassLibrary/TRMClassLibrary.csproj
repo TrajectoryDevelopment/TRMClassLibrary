@@ -120,6 +120,9 @@
     <Compile Include="TRJListView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TRJMaskedTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TRJMonthCalendar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -139,6 +142,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TRJRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRJTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TRJTextBox.cs">

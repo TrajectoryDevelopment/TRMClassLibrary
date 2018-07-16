@@ -20,6 +20,9 @@ namespace TRMClassLibrary
             this.TextChanged += new
             EventHandler(TRJTextBox1_TextChanged);
             this.Enter += new EventHandler(TRJTextBox1_TextChanged);
+            this.Enter += new EventHandler(TRJTextBox1_Enter);
+            
+           
             
         }
         private void
@@ -30,6 +33,8 @@ namespace TRMClassLibrary
                 this.Text.Trim();
             }
         }
+
+       
         private void TRJTextBox1_Enter(object sender, EventArgs e)
         {
             this.Text.Trim();

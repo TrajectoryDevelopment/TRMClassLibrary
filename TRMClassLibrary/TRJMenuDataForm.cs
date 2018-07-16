@@ -141,7 +141,9 @@ namespace TRMClassLibrary
             {
                 return;
             }
-            if (ctrl is Form | ctrl is Panel | ctrl is UserControl)
+            // 
+
+            if (ctrl is Form || ctrl is Panel || ctrl is UserControl || ctrl is TabControl || ctrl is TabPage)  //|| ctrl.Controls.Count >0 
             {
                 if(ctrl is Form)
                 {
@@ -165,8 +167,87 @@ namespace TRMClassLibrary
                     }
                          
                 }
-               
-                if (ctrl is Panel || ctrl is UserControl)
+                if (ctrl is TabControl)
+                {
+                    ctrl.Enabled = true;
+                }
+                if (ctrl is TabPage)
+                {
+                    ctrl.Enabled = true;
+                }
+                if (ctrl is TRJTabControl)
+                {
+
+                    TRJTabControl tc = (TRJTabControl)ctrl;
+                    
+                    tc.AllowTabChange = visMode != "Edit";
+                    ctrl.Enabled = true;
+
+                    for (int i = 0; i < tc.TabPages.Count; i++)
+                    {
+                        tc.TabPages[i].Enabled = true;
+                        //if (visMode != "Edit")
+                        //{
+
+                        //    tc.TabPages[i].Enabled = true;
+
+                        //}
+                        //else
+                        //{
+                        //    //  We are editing so only the selected page is enabled
+                        //    if (i == tc.SelectedIndex)
+                        //    {
+                        //        tc.TabPages[i].Enabled = true;
+                        //    }
+                        //    else
+                        //    {
+                        //        tc.TabPages[i].Enabled = false;
+                        //    }
+
+                        //}
+
+                    }
+                }
+                //if (ctrl is TabControl)
+                //{
+
+                //    TabControl tc = (TabControl)ctrl;
+
+                //    ctrl.Enabled = true;
+                //    //TRJTabControl tc = (TRJTabControl)ctrl;
+                //    //tc.AllowTabChange = visMode != "Edit";
+                //    //ctrl.Enabled = true;
+
+                //    for (int i = 0; i < tc.TabPages.Count; i++)
+                //    {
+                //        if (visMode != "Edit")
+                //        {
+
+                //            tc.TabPages[i].Enabled = true;
+
+                //        }
+                //        else
+                //        {
+                //            //  We are editing so only the selected page is enabled
+                //            if (i == tc.SelectedIndex)
+                //            {
+                //                tc.TabPages[i].Enabled = true;
+                //            }
+                //            else
+                //            {
+                //                tc.TabPages[i].Enabled = false;
+                //            }
+
+                //        }
+
+                //    }
+                //}
+                //if(ctrl is DataGridView || ctrl is TRJDataGridView)
+                //{
+                //    // This is  just here to check to see if the DGV has Controls inside it
+                //    ctrl.Enabled = true;
+                //}
+                if (ctrl is Panel || ctrl is UserControl )
                 {
                     if (ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
                     {
@@ -179,12 +260,12 @@ namespace TRMClassLibrary
                 }
                foreach(Control c in ctrl.Controls)
                 {
-                    bool okToProcessUserControl = (ctrl.Tag == null || ctrl.Tag.ToString() != "Exclude");
-                    if (ctrl is UserControl)
+                    bool okToProcessUserControl = (c.Tag == null || c.Tag.ToString() != "Exclude");
+                    if (c is UserControl && okToProcessUserControl)
                     {
 
                         // FIRST FIND THE BINDING NAVIGATOR AND SEE IF IT HAS AN EDIT BUTTON
-                        foreach (Control c1 in ctrl.Controls)
+                        foreach (Control c1 in c.Controls)
                         {
                             if (c1 is Button)
                             {
@@ -192,46 +273,32 @@ namespace TRMClassLibrary
                                 {
                                     c1.Enabled = true; 
                                 }
- /*                               foreach (Control c2 in c1.Controls)
-                                    if (c2 is Button && c2.Text.ToUpper() == "EDIT")
-                                    {
-                                        c2.Enabled = (visMode.ToUpper() == "EDIT");
-                                        okToProcessUserControl = false;
-                                        break;
-                                    }
-  */
                             }
                         }
                     }
-                   if (!okToProcessUserControl)
-                   {
-                       break;
-                   }
-                    if (!(c is Label))
+                    if (!(c is Label || c is TRJLabel))
                     {
                          SetVisMode(vmode,c,navBindingSource);
                     }
                 }
             }
 
-            else
+            else // We have just a single control to process
             {
-                 if (ctrl is TextBox | ctrl is ComboBox | ctrl is DateTimePicker | ctrl is CheckBox | ctrl is MaskedTextBox |ctrl is Button)
+                bool okToProcessControl = (ctrl.Tag == null || ctrl.Tag.ToString() != "Exclude");
+                if (okToProcessControl == false)
                 {
-                    if (ctrl is Button)
-                    {
- //                       int x = 1;
-                    }
-                    // var bc = Color.FromKnownColor(KnownColor.Magenta);
+                    return;
+                }
+                if (ctrl is TextBox || ctrl is TRJTextBox || ctrl is ComboBox || ctrl is DateTimePicker
+                    || ctrl is CheckBox || ctrl is MaskedTextBox || ctrl is Button)
+                {
+                   // var bc = Color.FromKnownColor(KnownColor.Magenta);
                     //   ctrl.Enabled = (visMode.ToUpper() == "EDIT");
                     // bc = ctrl.BackColor;
                     if ((string)ctrl.Tag != "Navigation")
                     {
-                        ctrl.Enabled = (visMode.ToUpper() == "EDIT");
-                    }
-                    else
-                    {
-                        if (visMode.ToUpper() != "EDIT")
+                        if (visMode.ToUpper() == "EDIT")
                         {
                             ctrl.Enabled = true;
                         }
@@ -239,20 +306,49 @@ namespace TRMClassLibrary
                         {
                             ctrl.Enabled = false;
                         }
-                       
-                    }
-                   
-                }
-                if (ctrl is DataGridView)
-                {
-                    if( ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
-                    {
-                        ctrl.Enabled = (visMode.ToUpper() != "EDIT");
+
                     }
                     else
                     {
-                        ctrl.Enabled = (visMode.ToUpper() == "EDIT");
+                        if (visMode.ToUpper() != "EDIT")
+                        { 
+                            ctrl.Enabled = true;
+                        }
+                        else
+                        {
+                            ctrl.Enabled = false;
+                        }
                     }
+                   
+                }
+                if (ctrl is DataGridView || ctrl is TRJDataGridView)
+                {
+  
+                        if (ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
+                        {
+                            ctrl.Enabled = (visMode.ToUpper() != "EDIT");
+                        }
+                        else
+                        {
+                        ctrl.Enabled = true; //   Unless specifically set for Navigation it is always enabled.   The code below handles the readonly business.  // (visMode.ToUpper() == "EDIT");
+                            TRJDataGridView grd = (TRJDataGridView)ctrl; 
+                            // Now check each column and set ReadOnly off or on depending on VisMode
+                            for (int i = 0; i < grd.Columns.Count; i++)
+                            //{
+                                if (grd.Columns[i].ReadOnly != true) // the ReadOnly columns stay ReadOnly regardless
+                                {
+                                    // If we are not editing set the grid to readonly if the Tag is NOT Readonly
+                                    // The readonly Tag means it is always set to ReadOnly, so we don't process
+                                    DataGridViewTextBoxColumn col = (DataGridViewTextBoxColumn)grd.Columns[i];
+                                    if (grd.Columns[i].Tag == null || grd.Columns[i].Tag.ToString() != "ReadOnly")
+                                    {
+                                        grd.Columns[i].ReadOnly = visMode.ToUpper() != "EDIT";
+                                    }
+                                }
+                                
+                            //}
+                        }
+                    
                 }
             }
             
@@ -286,6 +382,7 @@ namespace TRMClassLibrary
         {
             this.editMode = "View";
             SetVisMode("View");
+
             //   MessageBox.Show("Save Clicked");
             // Save 
         }
@@ -298,8 +395,9 @@ namespace TRMClassLibrary
         virtual protected void EditRoutine()
         {
             this.editMode = "Edit";
-            SetVisMode("Edit");
-          
+            SetVisMode("Edit"); 
+            
+            
             // Save 
             // MessageBox.Show("Edit Clicked");
         }
@@ -324,6 +422,7 @@ namespace TRMClassLibrary
         {
 
         }
+
 
         virtual protected int SearchRoutine() 
         {   

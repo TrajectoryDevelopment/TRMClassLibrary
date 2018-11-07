@@ -143,7 +143,8 @@ namespace TRMClassLibrary
             }
             // 
 
-            if (ctrl is Form || ctrl is Panel || ctrl is UserControl || ctrl is TabControl || ctrl is TabPage)  //|| ctrl.Controls.Count >0 
+            if (ctrl is Form || ctrl is Panel || ctrl is UserControl || ctrl is TabControl || ctrl is TRJTabControl 
+                || ctrl is TabPage  || ctrl is GroupBox )  //|| ctrl.Controls.Count >0 
             {
                 if(ctrl is Form)
                 {
@@ -167,7 +168,7 @@ namespace TRMClassLibrary
                     }
                          
                 }
-                if (ctrl is TabControl)
+                if (ctrl is TabControl || ctrl is TRJTabControl)
                 {
                     ctrl.Enabled = true;
                 }
@@ -208,46 +209,7 @@ namespace TRMClassLibrary
 
                     }
                 }
-                //if (ctrl is TabControl)
-                //{
-
-                //    TabControl tc = (TabControl)ctrl;
-
-                //    ctrl.Enabled = true;
-                //    //TRJTabControl tc = (TRJTabControl)ctrl;
-                //    //tc.AllowTabChange = visMode != "Edit";
-                //    //ctrl.Enabled = true;
-
-                //    for (int i = 0; i < tc.TabPages.Count; i++)
-                //    {
-                //        if (visMode != "Edit")
-                //        {
-
-                //            tc.TabPages[i].Enabled = true;
-
-                //        }
-                //        else
-                //        {
-                //            //  We are editing so only the selected page is enabled
-                //            if (i == tc.SelectedIndex)
-                //            {
-                //                tc.TabPages[i].Enabled = true;
-                //            }
-                //            else
-                //            {
-                //                tc.TabPages[i].Enabled = false;
-                //            }
-
-                //        }
-
-                //    }
-                //}
-                //if(ctrl is DataGridView || ctrl is TRJDataGridView)
-                //{
-                //    // This is  just here to check to see if the DGV has Controls inside it
-                //    ctrl.Enabled = true;
-                //}
-                if (ctrl is Panel || ctrl is UserControl )
+                if ((ctrl is Panel || ctrl is UserControl) &&  !(ctrl is TabPage) )
                 {
                     if (ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
                     {
@@ -258,6 +220,7 @@ namespace TRMClassLibrary
                         ctrl.Enabled = (visMode.ToUpper() == "EDIT");
                     }
                 }
+  
                foreach(Control c in ctrl.Controls)
                 {
                     bool okToProcessUserControl = (c.Tag == null || c.Tag.ToString() != "Exclude");
@@ -290,10 +253,41 @@ namespace TRMClassLibrary
                 {
                     return;
                 }
-                if (ctrl is TextBox || ctrl is TRJTextBox || ctrl is ComboBox || ctrl is DateTimePicker
-                    || ctrl is CheckBox || ctrl is MaskedTextBox || ctrl is Button)
+                if (ctrl is DataGridView || ctrl is TRJDataGridView)
                 {
-                   // var bc = Color.FromKnownColor(KnownColor.Magenta);
+  
+                        if (ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
+                        {
+                            ctrl.Enabled = (visMode.ToUpper() != "EDIT");
+                        }
+                        else
+                        {
+                        ctrl.Enabled = true; //   Unless specifically set for Navigation it is always enabled.   The code below handles the readonly business.  // (visMode.ToUpper() == "EDIT");
+                            TRJDataGridView grd = (TRJDataGridView)ctrl;
+                        grd.Enabled = true;
+                            // Now check each column and set ReadOnly off or on depending on VisMode
+                            for (int i = 0; i < grd.Columns.Count; i++)
+                            {
+                              //  if (grd.Columns[i].ReadOnly != true) // the ReadOnly columns stay ReadOnly regardless
+                                {
+                                    // If we are not editing set the grid to readonly if the Tag is NOT Readonly
+                                    // The readonly Tag means it is always set to ReadOnly, so we don't process
+                                 //   DataGridViewTextBoxColumn col = (DataGridViewTextBoxColumn)grd.Columns[i];
+                                    if (grd.Columns[i].Tag == null || grd.Columns[i].Tag.ToString() == "Editable" )  // grd.Columns[i].Tag.ToString() != "ReadOnly")
+                                    {
+                                        grd.Columns[i].ReadOnly = visMode.ToUpper() != "EDIT";
+                                    }
+                                }
+                                
+                            }
+                        }
+                    
+                }
+                else
+    //            if (ctrl is TextBox || ctrl is TRJTextBox || ctrl is ComboBox || ctrl is DateTimePicker
+    //|| ctrl is CheckBox || ctrl is MaskedTextBox || ctrl is Button || ctrl is )
+                {
+                    // var bc = Color.FromKnownColor(KnownColor.Magenta);
                     //   ctrl.Enabled = (visMode.ToUpper() == "EDIT");
                     // bc = ctrl.BackColor;
                     if ((string)ctrl.Tag != "Navigation")
@@ -311,7 +305,7 @@ namespace TRMClassLibrary
                     else
                     {
                         if (visMode.ToUpper() != "EDIT")
-                        { 
+                        {
                             ctrl.Enabled = true;
                         }
                         else
@@ -319,39 +313,11 @@ namespace TRMClassLibrary
                             ctrl.Enabled = false;
                         }
                     }
-                   
+
                 }
-                if (ctrl is DataGridView || ctrl is TRJDataGridView)
-                {
-  
-                        if (ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
-                        {
-                            ctrl.Enabled = (visMode.ToUpper() != "EDIT");
-                        }
-                        else
-                        {
-                        ctrl.Enabled = true; //   Unless specifically set for Navigation it is always enabled.   The code below handles the readonly business.  // (visMode.ToUpper() == "EDIT");
-                            TRJDataGridView grd = (TRJDataGridView)ctrl; 
-                            // Now check each column and set ReadOnly off or on depending on VisMode
-                            for (int i = 0; i < grd.Columns.Count; i++)
-                            //{
-                                if (grd.Columns[i].ReadOnly != true) // the ReadOnly columns stay ReadOnly regardless
-                                {
-                                    // If we are not editing set the grid to readonly if the Tag is NOT Readonly
-                                    // The readonly Tag means it is always set to ReadOnly, so we don't process
-                                    DataGridViewTextBoxColumn col = (DataGridViewTextBoxColumn)grd.Columns[i];
-                                    if (grd.Columns[i].Tag == null || grd.Columns[i].Tag.ToString() != "ReadOnly")
-                                    {
-                                        grd.Columns[i].ReadOnly = visMode.ToUpper() != "EDIT";
-                                    }
-                                }
-                                
-                            //}
-                        }
-                    
-                }
+
             }
-            
+
 
         }
 
@@ -409,14 +375,23 @@ namespace TRMClassLibrary
 
         virtual protected bool DeleteConfirmed()
         {
-            string message = "Continue to delete this record?";
-            string caption = "Data Deletion Confirmation";
+            string _message = "Continue to delete this record?";
+            string _caption = "Data Deletion Confirmation";
+            //MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            //DialogResult result;
+
+            //result = MessageBox.Show(this, message, caption, buttons);
+            //return result == DialogResult.Yes;
+            return DeleteConfirmed(_message, _caption);
+        }
+        virtual protected bool DeleteConfirmed(string message, string caption)
+        {
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
 
             result = MessageBox.Show(this, message, caption, buttons);
             return result == DialogResult.Yes;
-     
+
         }
         virtual protected void DeleteRoutine()
         {

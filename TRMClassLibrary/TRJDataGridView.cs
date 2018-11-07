@@ -11,9 +11,27 @@ namespace TRMClassLibrary
     {
         public TRJDataGridView()
         {
-            AddReadOnlyTags();
+           // AddReadOnlyTags();  
         }
-        private void AddReadOnlyTags()
+
+        protected override void OnColumnStateChanged(DataGridViewColumnStateChangedEventArgs e)
+        {
+            base.OnColumnStateChanged(e);
+        }
+        protected override void OnColumnAdded(DataGridViewColumnEventArgs e)
+        {
+            base.OnColumnAdded(e);
+            //DataGridViewColumn col = (DataGridViewColumn)this.Columns[Columns.Count - 1];
+            //if (col.ReadOnly == true)
+            //{
+            //    col.Tag = "ReadOnly";
+            //}
+            //else
+            //{
+            //    col.Tag = "Editable";
+            //}
+        }
+        public void AddReadOnlyTags()
         {
             for (int i = 0; i < this.Columns.Count; i++)
             {
@@ -21,6 +39,10 @@ namespace TRMClassLibrary
                 {
                     // the tag is used to govern editability in SetVisMode of the TRJMEnuData Form 
                     this.Columns[i].Tag = "ReadOnly";
+                }
+                else
+                {
+                    this.Columns[i].Tag = "Editable";
                 }
             }
         }

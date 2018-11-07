@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TRMClassLibrary
 {
-    class TRJMaskedTextBox : MaskedTextBox 
+    public class TRJMaskedTextBox : MaskedTextBox 
     {
     }
 }

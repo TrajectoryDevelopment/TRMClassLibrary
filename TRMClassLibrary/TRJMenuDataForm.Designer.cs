@@ -42,18 +42,21 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(899, 514);
+            this.btnOK.Location = new System.Drawing.Point(1701, 914);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Visible = false;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(828, 514);
+            this.btnCancel.Location = new System.Drawing.Point(1630, 914);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Visible = false;
             // 
             // menuStrip1
             // 
             this.menuStrip1.AllowItemReorder = true;
             this.menuStrip1.AutoSize = false;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
             this.deleteToolStripMenuItem,
@@ -65,8 +68,9 @@
             this.doneToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(958, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1604, 27);
             this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Tag = "Exclude";
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
@@ -74,6 +78,7 @@
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.Size = new System.Drawing.Size(41, 23);
+            this.addToolStripMenuItem.Tag = "Exclude";
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -127,9 +132,11 @@
             // TRJMenuDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(958, 548);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1604, 858);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TRJMenuDataForm";
             this.Text = "TRJMenuDataForm";
             this.Load += new System.EventHandler(this.TRJMenuDataForm_Load);
@@ -143,8 +150,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         public System.Windows.Forms.MenuStrip menuStrip1;
         public System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
@@ -153,5 +158,6 @@
         public System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         public System.Windows.Forms.ToolStripTextBox searchToolStripTextBox;
         public System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
     }
 }

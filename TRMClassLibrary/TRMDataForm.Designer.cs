@@ -40,8 +40,8 @@
             // 
             this.btnOK.AutoSize = true;
             this.btnOK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnOK.Location = new System.Drawing.Point(1752, 949);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnOK.Location = new System.Drawing.Point(1934, 1053);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(1);
             this.btnOK.Size = new System.Drawing.Size(32, 23);
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click_1);
             // 
@@ -49,9 +49,8 @@
             // 
             this.btnCancel.AutoSize = true;
             this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(1687, 949);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCancel.Location = new System.Drawing.Point(1869, 1053);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(1);
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
             // 
             // btnDelete
@@ -59,8 +58,8 @@
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.AutoSize = true;
             this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(1486, 948);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Location = new System.Drawing.Point(1668, 1052);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(48, 23);
             this.btnDelete.TabIndex = 9;
@@ -73,8 +72,8 @@
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.AutoSize = true;
             this.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAdd.Location = new System.Drawing.Point(1446, 948);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdd.Location = new System.Drawing.Point(1628, 1052);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(36, 23);
             this.btnAdd.TabIndex = 8;
@@ -87,8 +86,8 @@
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.AutoSize = true;
             this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEdit.Location = new System.Drawing.Point(1578, 948);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEdit.Location = new System.Drawing.Point(1760, 1052);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(35, 23);
             this.btnEdit.TabIndex = 7;
@@ -101,8 +100,8 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.AutoSize = true;
             this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSave.Location = new System.Drawing.Point(1628, 948);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(1810, 1052);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(42, 23);
             this.btnSave.TabIndex = 6;
@@ -115,8 +114,8 @@
             this.btnFontPlus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFontPlus.AutoSize = true;
             this.btnFontPlus.Enabled = false;
-            this.btnFontPlus.Location = new System.Drawing.Point(1332, 949);
-            this.btnFontPlus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFontPlus.Location = new System.Drawing.Point(1514, 1053);
+            this.btnFontPlus.Margin = new System.Windows.Forms.Padding(2);
             this.btnFontPlus.Name = "btnFontPlus";
             this.btnFontPlus.Size = new System.Drawing.Size(47, 23);
             this.btnFontPlus.TabIndex = 10;
@@ -130,8 +129,8 @@
             this.btnFontMinus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFontMinus.AutoSize = true;
             this.btnFontMinus.Enabled = false;
-            this.btnFontMinus.Location = new System.Drawing.Point(1390, 949);
-            this.btnFontMinus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFontMinus.Location = new System.Drawing.Point(1572, 1053);
+            this.btnFontMinus.Margin = new System.Windows.Forms.Padding(2);
             this.btnFontMinus.Name = "btnFontMinus";
             this.btnFontMinus.Size = new System.Drawing.Size(44, 23);
             this.btnFontMinus.TabIndex = 11;
@@ -143,17 +142,16 @@
             // TRMDataForm
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1422, 777);
+            this.ClientSize = new System.Drawing.Size(1604, 881);
             this.Controls.Add(this.btnFontMinus);
             this.Controls.Add(this.btnFontPlus);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnSave);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "TRMDataForm";
             this.Text = "TRMDataForm";
             this.Load += new System.EventHandler(this.TRMDataForm_Load);

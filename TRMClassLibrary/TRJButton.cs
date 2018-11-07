@@ -9,5 +9,29 @@ namespace TRMClassLibrary
 {
     public class TRJButton : Button
     {
+
+        private AutoScaleMode _autoscaleMode = AutoScaleMode.Dpi;
+
+        public AutoScaleMode AutoScaleMode
+
+        {
+
+            get
+
+            {
+
+                return _autoscaleMode;
+
+            }
+
+            set
+
+            {
+
+                _autoscaleMode = value;
+
+            }
+
+        }
     }
 }

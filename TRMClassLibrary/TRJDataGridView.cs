@@ -11,9 +11,10 @@ namespace TRMClassLibrary
     {
         public TRJDataGridView()
         {
-           // AddReadOnlyTags();  
+            this.InitializeComponent();
         }
 
+        
         protected override void OnColumnStateChanged(DataGridViewColumnStateChangedEventArgs e)
         {
             base.OnColumnStateChanged(e);
@@ -47,8 +48,30 @@ namespace TRMClassLibrary
             }
         }
 
-        
+        private void InitializeComponent()
+        {
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // TRJDataGridView
+            // 
+            this.ColumnNameChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.TRJDataGridView_ColumnNameChanged);
+            this.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.TRJDataGridView_DataBindingComplete);
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
 
+        }
+
+        private void TRJDataGridView_ColumnNameChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+           
+
+        }
+
+        private void TRJDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+
+        }
     }
 
 }

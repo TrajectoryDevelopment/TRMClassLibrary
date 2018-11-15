@@ -29,6 +29,12 @@ namespace TRMClassLibrary
            // this.Leave += new EventHandler(TRJTextBox1_OnLeave);
 
         }
+        private bool endEditOnLeave;
+        public bool EndEditOnLeave
+        {
+            get { return endEditOnLeave; }
+            set { endEditOnLeave = value; }
+        }
 
         protected override void OnLeave(EventArgs e)
         {
@@ -39,7 +45,14 @@ namespace TRMClassLibrary
                 this.Text.Substring(0, this.MaxLength - 1);
                
             }
-            
+            if (endEditOnLeave == true)
+            {
+                //this.DataBindings[0].BindingMemberInfo.
+
+                BindingSource source = (BindingSource)this.DataBindings["Text"].DataSource;
+                source.EndEdit();
+
+            }
         }
         protected override void OnValidated(EventArgs e)
         {

@@ -42,13 +42,13 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(1701, 914);
+            this.btnOK.Location = new System.Drawing.Point(1701, 937);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Visible = false;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(1630, 914);
+            this.btnCancel.Location = new System.Drawing.Point(1630, 937);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Visible = false;
             // 
@@ -133,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1604, 858);
+            this.ClientSize = new System.Drawing.Size(1604, 881);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);

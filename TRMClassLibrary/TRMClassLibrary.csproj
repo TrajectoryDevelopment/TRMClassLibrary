@@ -82,12 +82,6 @@
     <Compile Include="MaskedDateBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Properties\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Properties\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="TRJButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -206,15 +200,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRJDataGridView.resx">
+      <DependentUpon>TRJDataGridView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TRJDateTextBox.resx">
       <DependentUpon>TRJDateTextBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TRJMenuDataForm.resx">
       <DependentUpon>TRJMenuDataForm.cs</DependentUpon>
@@ -222,9 +218,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TRJNavigatorForm.resx">
       <DependentUpon>TRJNavigatorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TRJReportForm.resx">
       <DependentUpon>TRJReportForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TRMDataForm.resx">
       <DependentUpon>TRMDataForm.cs</DependentUpon>

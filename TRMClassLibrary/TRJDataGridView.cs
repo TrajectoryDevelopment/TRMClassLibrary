@@ -13,7 +13,7 @@ namespace TRMClassLibrary
         {
             this.InitializeComponent();
         }
-
+        
         
         protected override void OnColumnStateChanged(DataGridViewColumnStateChangedEventArgs e)
         {

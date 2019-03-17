@@ -28,6 +28,13 @@ namespace TRMClassLibrary
             }
 
         }
+        private bool requireBaseDeleteConfirmation;
+        public bool RequireBaseDeleteConfirmation
+        {
+            get { return requireBaseDeleteConfirmation; }
+            set { requireBaseDeleteConfirmation = value; }
+        }
+
         private bool deleteBtnVisible = true;
         public bool DeleteBtnVisible
         {
@@ -137,7 +144,7 @@ namespace TRMClassLibrary
         {
             this.visMode = vmode;
             //            if (ctrl == this & ctrl is Form )
-            if (ctrl.Tag != null && ctrl.Tag.ToString()=="Exclude")
+            if (ctrl.Tag != null && ctrl.Tag.ToString()=="Exclude" && ctrl.Tag.ToString() != "ExcludeContainer")
             {
                 return;
             }
@@ -211,14 +218,27 @@ namespace TRMClassLibrary
                 }
                 if ((ctrl is Panel || ctrl is UserControl) &&  !(ctrl is TabPage) )
                 {
-                    if (ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
+                    string tagString = ctrl.Tag.ToString();
+                    switch (tagString)
                     {
+                    case "Navigation" :
                         ctrl.Enabled = (visMode.ToUpper() != "EDIT");
-                    }
-                    else
-                    {
+                        break;
+                    case "ExcludeContainer" :
+                        ctrl.Enabled = true;
+                        break;
+                    default :
                         ctrl.Enabled = (visMode.ToUpper() == "EDIT");
+                        break;
                     }
+                    //if (ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
+                    //{
+                    //    ctrl.Enabled = (visMode.ToUpper() != "EDIT");
+                    //}
+                    //else
+                    //{
+                    //    ctrl.Enabled = (visMode.ToUpper() == "EDIT");
+                    //}
                 }
   
                foreach(Control c in ctrl.Controls)
@@ -335,7 +355,7 @@ namespace TRMClassLibrary
                 CancelDataChangesRoutine();
             }
         }
-        virtual protected void CancelDataChangesRoutine()
+        virtual public void CancelDataChangesRoutine()
         {
            
             this.editMode = "View";
@@ -395,7 +415,7 @@ namespace TRMClassLibrary
         }
         virtual protected void DeleteRoutine()
         {
-
+          
         }
 
 
@@ -422,6 +442,7 @@ namespace TRMClassLibrary
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.AddRoutine();
+
         }
 
         private void TRMDataForm_Load(object sender, EventArgs e)
@@ -432,8 +453,9 @@ namespace TRMClassLibrary
 
         public void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            if (DeleteConfirmed() == true)
+            // query parameter requireDeleteConfirmation
+            
+            if (requireBaseDeleteConfirmation != true || DeleteConfirmed() == true)
             {
                  DeleteRoutine();
 

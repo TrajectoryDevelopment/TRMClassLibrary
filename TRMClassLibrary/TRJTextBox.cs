@@ -39,7 +39,7 @@ namespace TRMClassLibrary
         protected override void OnLeave(EventArgs e)
         {
             base.OnLeave(e);
-            this.Text = this.Text.Trim();
+            this.Text = this.Text.TrimEnd();
             if (this.Text.Length > this.MaxLength)
             {
                 this.Text.Substring(0, this.MaxLength - 1);
@@ -47,17 +47,16 @@ namespace TRMClassLibrary
             }
             if (endEditOnLeave == true)
             {
-                //this.DataBindings[0].BindingMemberInfo.
-
+           
                 BindingSource source = (BindingSource)this.DataBindings["Text"].DataSource;
                 source.EndEdit();
-
+ 
             }
         }
         protected override void OnValidated(EventArgs e)
         {
             base.OnValidated(e);
-            this.Text = this.Text.Trim();
+            this.Text = this.Text.TrimEnd();
             if (this.MaxLength > 0) // dates etc are given maxlength of -1
             {
                 if (this.Text.Length > this.MaxLength)
@@ -79,15 +78,19 @@ namespace TRMClassLibrary
         {
             if (TrimText == true)
             {
-                this.Text.Trim();
+                this.Text.TrimEnd();
             }
         }
-        
+        protected void SetMaxLength()
+        {
+            var bs = this.DataBindings["Text"].DataSource;
+            
+        }
         
         protected override void OnEnter( EventArgs e)
         {
             base.OnEnter(e);
-            this.Text = this.Text.Trim();
+            this.Text = this.Text.TrimEnd();
             this.SelectAll();
         }
     }

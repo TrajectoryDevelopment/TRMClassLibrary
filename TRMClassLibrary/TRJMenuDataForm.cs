@@ -217,19 +217,27 @@ namespace TRMClassLibrary
                     }
                 }
                 if ((ctrl is Panel || ctrl is UserControl) &&  !(ctrl is TabPage) )
-                {
+                {   if(ctrl.Tag != null)
+                    {
+
                     string tagString = ctrl.Tag.ToString();
                     switch (tagString)
+                        {
+                        case "Navigation" :
+                            ctrl.Enabled = (visMode.ToUpper() != "EDIT");
+                            break;
+                        case "ExcludeContainer" :
+                            ctrl.Enabled = true;
+                            break;
+                        default :
+                            ctrl.Enabled = (visMode.ToUpper() == "EDIT");
+                            break;
+                        }
+                    }
+                    else
                     {
-                    case "Navigation" :
-                        ctrl.Enabled = (visMode.ToUpper() != "EDIT");
-                        break;
-                    case "ExcludeContainer" :
-                        ctrl.Enabled = true;
-                        break;
-                    default :
                         ctrl.Enabled = (visMode.ToUpper() == "EDIT");
-                        break;
+
                     }
                     //if (ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
                     //{

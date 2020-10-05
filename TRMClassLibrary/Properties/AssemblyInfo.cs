@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("TRMClassLibrary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Trajectory Inc.")]
+[assembly: AssemblyCompany("Trajectory Development LLC")]
 [assembly: AssemblyProduct("TRMClassLibrary")]
-[assembly: AssemblyCopyright("Copyright ©  2015-2018 Donald Fletcher")]
+[assembly: AssemblyCopyright("Copyright ©  2015-2020 Donald Fletcher")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

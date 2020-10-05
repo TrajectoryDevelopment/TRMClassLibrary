@@ -281,7 +281,7 @@ namespace TRMClassLibrary
                 {
                     return;
                 }
-                if (ctrl is DataGridView || ctrl is TRJDataGridView)
+                if (ctrl is TRJDataGridView)
                 {
   
                         if (ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
@@ -310,6 +310,36 @@ namespace TRMClassLibrary
                             }
                         }
                     
+                }
+                if ( ctrl is TRJDataGridView)
+                {
+
+                    if (ctrl.Tag != null && ctrl.Tag.ToString() == "Navigation")
+                    {
+                        ctrl.Enabled = (visMode.ToUpper() != "EDIT");
+                    }
+                    else
+                    {
+                        ctrl.Enabled = true; //   Unless specifically set for Navigation it is always enabled.   The code below handles the readonly business.  // (visMode.ToUpper() == "EDIT");
+                       DataGridView grd = (DataGridView)ctrl;
+                        grd.Enabled = true;
+                        // Now check each column and set ReadOnly off or on depending on VisMode
+                        for (int i = 0; i < grd.Columns.Count; i++)
+                        {
+                            //  if (grd.Columns[i].ReadOnly != true) // the ReadOnly columns stay ReadOnly regardless
+                            {
+                                // If we are not editing set the grid to readonly if the Tag is NOT Readonly
+                                // The readonly Tag means it is always set to ReadOnly, so we don't process
+                                //   DataGridViewTextBoxColumn col = (DataGridViewTextBoxColumn)grd.Columns[i];
+                                if (grd.Columns[i].Tag == null || grd.Columns[i].Tag.ToString() == "Editable")  // grd.Columns[i].Tag.ToString() != "ReadOnly")
+                                {
+                                    grd.Columns[i].ReadOnly = visMode.ToUpper() != "EDIT";
+                                }
+                            }
+
+                        }
+                    }
+
                 }
                 else
     //            if (ctrl is TextBox || ctrl is TRJTextBox || ctrl is ComboBox || ctrl is DateTimePicker
@@ -401,7 +431,7 @@ namespace TRMClassLibrary
             this.EditRoutine();
         }
 
-        virtual protected bool DeleteConfirmed()
+        virtual public bool DeleteConfirmed()
         {
             string _message = "Continue to delete this record?";
             string _caption = "Data Deletion Confirmation";

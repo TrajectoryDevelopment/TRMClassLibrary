@@ -42,13 +42,13 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(1701, 937);
+            this.btnOK.Location = new System.Drawing.Point(1721, 1117);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Visible = false;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(1630, 937);
+            this.btnCancel.Location = new System.Drawing.Point(1650, 1117);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Visible = false;
             // 
@@ -68,7 +68,7 @@
             this.doneToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1604, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1624, 27);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Tag = "Exclude";
             this.menuStrip1.Text = "menuStrip1";
@@ -133,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1604, 881);
+            this.ClientSize = new System.Drawing.Size(1624, 1061);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
